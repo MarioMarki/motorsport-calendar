@@ -1,0 +1,13 @@
+name: Calendar
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello
+        run: echo Hello
+      - name: Bye
+        run: echo Bye
