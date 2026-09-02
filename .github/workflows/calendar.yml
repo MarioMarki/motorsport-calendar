@@ -2,10 +2,15 @@ name: Calendar
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
@@ -18,3 +23,18 @@ jobs:
           python -m pip install requests
       - name: Running main.py
         run: python main.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add .
+
+          # Check if there are changes before committing to avoid step failures
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "Automated update from GitHub Actions"
+            git push origin HEAD:${{ github.ref_name }}
+          else
+            echo "No changes detected. Skipping push."
+          fi
