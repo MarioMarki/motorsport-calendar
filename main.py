@@ -57,10 +57,6 @@ for race in races:
         ses = race.get(session)
         if ses:
             blocks.append(event_block(race, session))
-    #       print(f"{session}\n Date:{ses['date']} \n Time:{ses['time']}")
-    # print(f'Race\n Date:{race["date"]}\n Time:{race["time"]}')
-    # print('------------------------------------------------------')
-    # summary(races[0]['raceName'],session)
 print(len(blocks))
 print(header+"\n"+"\n".join(blocks)+"\n"+footer)
 
