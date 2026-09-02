@@ -63,5 +63,3 @@ print(header+"\n"+"\n".join(blocks)+"\n"+footer)
 with open("f1.ics","w",encoding="utf-8") as f:
     f.write(header+"\n"+"\n".join(blocks)+"\n"+footer)
 
-#git config --global user.name "Your Name"
-# git config --global user.email "your@email.com"
