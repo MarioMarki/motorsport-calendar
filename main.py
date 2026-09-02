@@ -43,7 +43,7 @@ DTSTART:{ics_stamp(ses['date'],ses['time'])}
 DURATION:{length}
 SUMMARY:{summary(race["raceName"],session)}
 BEGIN:VALARM
-TRIGGER:-PT1H
+TRIGGER:-PT30M
 ACTION:DISPLAY
 DESCRIPTION:Session starting soon
 END:VALARM
