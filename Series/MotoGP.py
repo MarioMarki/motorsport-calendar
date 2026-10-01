@@ -1,5 +1,5 @@
 import requests
-from datetime import datetime,timezone
+from ics import iso_to_ics_stamp
 
 data = requests.get("https://api.pulselive.motogp.com/motogp/v1/events?seasonYear=2026").json()
 LENGHTS = {
@@ -20,13 +20,6 @@ NAMES = {
     "Qualifying Nr. 2 ":"Q2",
     "Grand Prix":"Race"
 }
-
-def iso_to_ics_stamp(time):
-    parsed_dt = datetime.fromisoformat(time)
-    utc_dt = parsed_dt.astimezone(timezone.utc)
-    result = utc_dt.strftime('%Y%m%dT%H%M%SZ')
-    return result
-
 def get_session():
     result = []
     for item in data:
@@ -47,5 +40,3 @@ def get_session():
                         }
                         result.append(summary)
     return result
-
-print(len(get_session()))
